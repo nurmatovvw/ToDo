@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <title>Document</title>
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <footer class="mt-auto text-white-50">
+      <p>Cover template for <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a>, by <a href="https://twitter.com/mdo" class="text-white">@mdo</a>.</p>
+    </footer>
+  </div>
+</head>
+<body>
+  <div class="container py-3">
+    <header>
+      <div class="d-flex flex-column flex-md-row align-items-center pb-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-journals" viewBox="0 0 16 16">
+            <path d="M5 0h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2 2 2 0 0 1-2 2H3a2 2 0 0 1-2-2h1a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1H1a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1H3a2 2 0 0 1 2-2z"/>
+            <path d="M1 6v-.5a.5.5 0 0 1 1 0V6h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V9h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 2.5v.5H.5a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1H2v-.5a.5.5 0 0 0-1 0z"/>
+          </svg>
+          <span class="fs-4">Pricing example</span>
+        </a>
+  
+        <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+          <a class="me-3 py-2 text-dark text-decoration-none" href="#">Features</a>
+          <a class="me-3 py-2 text-dark text-decoration-none" href="#">Enterprise</a>
+          <a class="me-3 py-2 text-dark text-decoration-none" href="#">Support</a>
+          <a class="py-2 text-dark text-decoration-none" href="#">Pricing</a>
+        </nav>
+      </div>
+      <form class="fs-4" action="create/" method="POST">
+        {% csrf_token %}
+        <label for="display4 fw-normal">To Do</label>
+        <input type="text" name="title">
+        <br>
+        <br>
+        <br>
+        <label>Описания задачи:</label>
+        <input type="text" name="description">
+        <br>
+        <br>
+        <hr>
+        <input class="btn btn-warning" type="submit" value="сохранить" >
+      </form>
+      <br>
+      <br>
+      <br>
+      <br>
+        {% if todos.count > 0 %}
+            <span class="fs-4">Cписок всех дел:</span>
+            <table class="table">
+              <br>
+                <tr><th>id</th><th> название</th> <th>описание</th><th>дата</th></tr>
+                {% for todo in todos %}
+                <tr><td>{{todo.id}}</td><td>{{todo.title}}</td><td>{{todo.description}}</td><td>{{todo.created_at}}</td></tr>
+                {% endfor %}
+                <br>
+            </table>
+        {% endif %}
+              <th scope="row" class="text-start">Public</th>
+              <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+              <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+              <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+            </tr>
+            <tr>
+              <th scope="row" class="text-start">Private</th>
+              <td></td>
+              <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+              <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+            </tr>
+          </tbody>
+  
+          <tbody>
+            <tr>
+              <th scope="row" class="text-start">Permissions</th>
+              <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+              <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+              <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+            </tr>
+            <tr>
+              <th scope="row" class="text-start">Sharing</th>
+              <td></td>
+              <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+              <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+            </tr>
+            <tr>
+              <th scope="row" class="text-start">Unlimited members</th>
+              <td></td>
+              <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+              <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+            </tr>
+            <tr>
+              <th scope="row" class="text-start">Extra security</th>
+              <td></td>
+              <td></td>
+              <td><svg class="bi" width="24" height="24"><use xlink:href="#check"></use></svg></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  
+    <footer class="pt-4 my-md-5 pt-md-5 border-top">
+      <div class="row">
+        <div class="col-12 col-md">
+        </div>
+        <div class="col-6 col-md">
+          <h5>Features</h5>
+          <ul class="list-unstyled text-small">
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Cool stuff</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Random feature</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team feature</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Stuff for developers</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another one</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Last time</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>Resources</h5>
+          <ul class="list-unstyled text-small">
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Resource name</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Another resource</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Final resource</a></li>
+          </ul>
+        </div>
+        <div class="col-6 col-md">
+          <h5>About</h5>
+          <ul class="list-unstyled text-small">
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Team</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Locations</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Privacy</a></li>
+            <li class="mb-1"><a class="link-secondary text-decoration-none" href="#">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+  </div>
+  
+</body>
+</html>
