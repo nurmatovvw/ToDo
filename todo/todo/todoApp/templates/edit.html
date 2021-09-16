@@ -32,35 +32,21 @@
           <a class="py-2 text-dark text-decoration-none" href="#">Pricing</a>
         </nav>
       </div>
-      <form class="fs-4" action="create/" method="POST">
+      <form method="POST">     
         {% csrf_token %}
         <label for="display4 fw-normal">To Do</label>
-        <input type="text" name="title">
+        <input type="text" name="title" value="{{todo.title}}">
         <br>
         <br>
         <br>
         <label for="display4 fw-normal">Описания задачи:</label>
-        <input type="text" name="description">
+        <input type="text" value="{{todo.description}}" name="description">
         <br>
         <br>
         <hr>
-        <input class="btn btn-warning" type="submit" value="сохранить" >
+        <input class="btn btn-warning" type="submit" value="сохранить">
+        <input class="btn btn-dark" type="submit" value="назад" >
       </form>
-      <br>
-      <br>
-      <br>
-        {% if todos.count > 0 %}
-            <span class="fs-4">Cписок всех дел:</span>
-            <table class="table">
-              <br>
-                <tr><th>№</th><th> название</th> <th>описание</th><th>дата</th></tr>
-                {% for todo in todos %}
-                <tr><td>{{todo.id}}</td><td>{{todo.title}}</td><td>{{todo.description}}</td><td>{{todo.created_at}}</td><td><a href="edit/{{todo.id}}">Изменить </a></td><td><a href="delete/{{todo.id}}">Удалить</a></td></tr>
-                {% endfor %}
-                <br>
-            </table>
-        {% endif %}
-  
     <!-- <footer class="pt-4 my-md-5 pt-md-5 border-top">
       <div class="row">
         <div class="col-12 col-md">
